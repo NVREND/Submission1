@@ -59,7 +59,7 @@ df
 # %% [markdown]
 # Dari output diatas dapat dilihat bahwa:
 # - Terdapat 918 baris dalam dataset
-# - terdapat 10 kolom, yaitu: Age, Sex, ChestPainType, RestingBP, Cholesterol, FastingBS, RestingECG, MaxHR, ExerciseAngina, Oldpeak, ST_Slope, HeartDisease
+# - terdapat 12 kolom, yaitu: Age, Sex, ChestPainType, RestingBP, Cholesterol, FastingBS, RestingECG, MaxHR, ExerciseAngina, Oldpeak, ST_Slope, HeartDisease
 
 # %%
 df.info()
@@ -88,7 +88,6 @@ df.info()
 # Duplicated: 272 observations
 # 
 # Final dataset: 918 observations
-# Setiap dataset yang digunakan dapat ditemukan pada Index of heart disease datasets dari UCI Machine Learning Repository pada link berikut : https://archive.ics.uci.edu/ml/machine-learning-databases/heart-disease/
 # 
 # ### Variabel-variabel pada heart failur prediction dataset adalah sebagai berikut:
 # - Age: usia pasien [tahun]
@@ -104,9 +103,9 @@ df.info()
 # - ST_Slope: kemiringan puncak latihan segmen ST [Up: upsloping, Flat: flat, Down: downsloping]
 # - HeartDisease: kelas keluaran [1: heart disease, 0: Normal]
 # --------------------------------------------------------------------------------------------------------------------------------------
-# - Terdapat 5 kolom dengan object types, namely: Sex, ChestPainType, RestingECG, ExerciseAngina, ST_Slope 
-# - Terdapat 6 kolom numeric dengan type int64, namely: Age, RestigBP, Cholesterol, FastingBS, MaxHR, HeartDisease
-# - Terdapat 1 kolom numeric dengan type float64, namely Oldpeak
+# - Terdapat 5 kolom dengan object types, yaitu: Sex, ChestPainType, RestingECG, ExerciseAngina, ST_Slope 
+# - Terdapat 6 kolom numeric dengan type int64, yaitu: Age, RestigBP, Cholesterol, FastingBS, MaxHR, HeartDisease
+# - Terdapat 1 kolom numeric dengan type float64, yaitu Oldpeak
 
 # %% [markdown]
 # # EDA

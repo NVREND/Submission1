@@ -34,7 +34,6 @@ Total: 1190 observations
 Duplicated: 272 observations
 
 Final dataset: 918 observations
-Setiap dataset yang digunakan dapat ditemukan pada Index of heart disease datasets dari UCI Machine Learning Repository pada link berikut : https://archive.ics.uci.edu/ml/machine-learning-databases/heart-disease/
 
 ### Variabel-variabel pada heart failur prediction dataset adalah sebagai berikut:
 - Age: usia pasien [tahun]
@@ -58,9 +57,11 @@ Setiap dataset yang digunakan dapat ditemukan pada Index of heart disease datase
 ## Data Preparation
 
 Dalam data preparation dilakukan pembagian data atau _spliting data, oversampling, dan Standarization_. 
+- Encoding
+  - Encoding adalah proses mengubah data kategorikal (data yang memiliki kategori atau label seperti "warna", "jenis kelamin", atau "status pernikahan") menjadi format numerik yang dapat dimengerti oleh algoritma machine learning. Encoding membantu mengonversi data tersebut ke dalam bentuk numerik tanpa mengurangi informasi yang terkandung di dalamnya.
+  - 
 - Pembagian data
   - dilakukan dengan membagi dataset menjadi 75% data pelatihan dan 25% data uji dengan masing masing 516 data pelatihan dan 230 data uji.
-- Oversampling
 - Standarization
    - Standardization adalah teknik untuk mengubah data agar memiliki distribusi dengan rata-rata 0 (mean = 0) dan simpangan baku 1 (standard deviation = 1). Teknik ini digunakan untuk memastikan bahwa semua fitur memiliki skala yang sama, yang penting untuk algoritma machine learning sensitif terhadap skala fitur, seperti algoritma berbasis gradien. 
    - Standarization dapat meningkatkan performa dan stabilitas numerik pada model. Standarisasi diterapkan pada data latih (X_train) dan data uji (X_test).
@@ -70,7 +71,27 @@ Dalam project ini menggunakan model Random Forest.
 - Random forest merupakan salah satu algoritma _machine learning_ yang efektif, cara kerjanya yaitu dengan menggabungkan beberapa pohon keputusan untuk meningkatkan akurasi prediksi. 
   - dalam project ini menggunakan n_estimators=70 untuk menentukan jumlah pohon keputusan yang akan dibangun dalam model random forest. Semakin banyak pohon, maka akurasi model akan meningkat, tetapi membutuhkan waktu pelatihan yang lebih lama.
   - random_state=42 seeding generator bilangan random untuk memastikan reprodusibilitas hasil.
-_______________________________________________________________________________________________________________________________
+__________________________________________________________________________________________________________________________________________________________
+Tahapan
+
+1. Pembentukan banyaknya pohon keputusan
+  - Setiap pohon keputusan dalam Random Forest dibangun menggunakan subset data yang berbeda, sehingga tidak ada pohon yang menggunakan seluruh data yang sama.
+2. Pembuatan Pohon Keputusan
+  - Pada setiap titik percabangan (node), model memilih fitur terbaik yang digunakan untuk membagi data.
+________________________________________________________________________________________________________________________________________________________
+Penjelasan Parameter yang Digunakan dalam Model
+
+- n_estimators=70: Parameter ini menentukan jumlah pohon keputusan yang akan dibangun dalam model Random Forest. Dalam konteks ini, kami memilih 70 pohon keputusan, yang berarti model akan menggunakan 70 pohon untuk membuat keputusan akhir. Semakin banyak pohon yang digunakan, semakin besar kemampuan model untuk menggeneralisasi dan memberikan prediksi yang akurat, tetapi juga membutuhkan waktu pelatihan yang lebih lama. Terlalu banyak pohon tidak selalu meningkatkan kinerja model secara signifikan setelah mencapai jumlah tertentu, tetapi ada trade-off antara akurasi dan waktu komputasi.
+- random_state=42: Parameter ini digunakan untuk menentukan seeding generator bilangan random. Dengan menggunakan nilai random_state yang tetap (misalnya 42), kita memastikan bahwa proses acak dalam pembagian data, pemilihan subset fitur, dan pembuatan pohon keputusan tetap konsisten setiap kali model dijalankan. Ini penting untuk reproducibility, yang berarti jika eksperimen dilakukan berulang kali, hasil yang sama dapat diperoleh. Hal ini sangat berguna dalam penelitian dan pengembangan untuk memastikan keandalan dan validitas hasil eksperimen._________________________________________________________________________________________________________________________________
+
+## Evaluation
+Kinerja model Random Forest dievaluasi dengan menggunakan data pengujian yang belum pernah dilihat oleh model selama pelatihan. Beberapa metrik evaluasi yang digunakan adalah:
+
+- Akurasi: Persentase prediksi yang benar dibandingkan dengan total prediksi.
+- Precision: Seberapa akurat model dalam memprediksi kelas positif.
+- Recall: Seberapa banyak kelas positif yang berhasil diprediksi oleh model.
+- F1-Score: Kombinasi dari precision dan recall untuk memberikan ukuran kinerja yang lebih seimbang.
+__________________________________________________________________________________________________________________________________________________
 Hasil dari model random forest:
 
 1. Akurasi Model
@@ -93,8 +114,7 @@ Hasil dari model random forest:
 - Macro Avg dan Weighted Avg:
 - Nilai-nilai ini konsisten di sekitar 0.88–0.89, mengindikasikan performa yang seimbang antar kelas.
 
-## Evaluation
-Penerapan algoritma Random Forest dapat meningkatkan akurasi dalam mendeteksi dan memprediksi risiko penyakit jantung dengan kemampuannya menangani data kompleks dan non-linear, seperti faktor risiko yang saling terkait. Algoritma ini menggunakan pendekatan ensemble learning dan bagging, yang mengurangi overfitting sehingga model dapat menggeneralisasi dengan lebih baik pada data pengujian dan menghasilkan prediksi yang lebih stabil. Hasil evaluasi menunjukkan bahwa Random Forest memberikan akurasi tinggi, dengan penelitian sebelumnya menunjukkan akurasi mencapai 87.7% pada data pengujian dan 92.63% pada data validasi. Selain itu, Random Forest juga mampu mengidentifikasi fitur-fitur penting dalam memprediksi risiko penyakit jantung, memberikan wawasan bagi profesional medis tentang faktor-faktor risiko utama yang berpengaruh pada kesehatan jantung. Algoritma ini juga efektif menangani data yang hilang dan tidak terstruktur, membuatnya cocok untuk digunakan dalam deteksi dini dan pencegahan penyakit jantung pada pasien. Dengan demikian, Random Forest terbukti sebagai algoritma yang efektif untuk meningkatkan akurasi prediksi dan mendukung keputusan medis dalam penanganan penyakit jantung.
+Penerapan algoritma Random Forest dapat meningkatkan akurasi dalam mendeteksi dan memprediksi risiko penyakit jantung dengan kemampuannya menangani data kompleks dan non-linear, seperti faktor risiko yang saling terkait. Algoritma ini menggunakan pendekatan ensemble learning dan bagging, yang mengurangi overfitting sehingga model dapat menggeneralisasi dengan lebih baik pada data pengujian dan menghasilkan prediksi yang lebih stabil. Hasil evaluasi menunjukkan bahwa Random Forest memberikan akurasi tinggi, dengan penelitian sebelumnya menunjukkan akurasi mencapai 87.7% pada data pengujian dan 92.63% pada data validasi. Selain itu, Random Forest juga mampu mengidentifikasi fitur-fitur penting dalam memprediksi risiko penyakit jantung, memberikan wawasan bagi profesional medis tentang faktor-faktor risiko utama yang berpengaruh pada kesehatan jantung. Algoritma ini juga efektif menangani data yang hilang dan tidak terstruktur, membuatnya cocok untuk digunakan dalam deteksi dini dan pencegahan penyakit jantung pada pasien. Dengan demikian, Random Forest terbukti menjadi algoritma yang efektif untuk meningkatkan akurasi prediksi dan mendukung keputusan medis dalam penanganan penyakit jantung.
 
 ## Referensi
 1. Haganta Depari, D., Widiastiwi, Y., Mega Santoni, M., Ilmu Komputer, F., Pembangunan Nasional Veteran Jakarta, U., Fatmawati Raya, J. R., & Labu, P. (n.d.). Perbandingan Model Decision Tree, Naive Bayes dan Random Forest untuk Prediksi Klasifikasi Penyakit Jantung. JURNAL INFORMATIK Edisi Ke, 18, 2022.
