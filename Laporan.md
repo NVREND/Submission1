@@ -70,32 +70,31 @@ Dalam project ini menggunakan model Random Forest.
 - Random forest merupakan salah satu algoritma _machine learning_ yang efektif, cara kerjanya yaitu dengan menggabungkan beberapa pohon keputusan untuk meningkatkan akurasi prediksi. 
   - dalam project ini menggunakan n_estimators=70 untuk menentukan jumlah pohon keputusan yang akan dibangun dalam model random forest. Semakin banyak pohon, maka akurasi model akan meningkat, tetapi membutuhkan waktu pelatihan yang lebih lama.
   - random_state=42 seeding generator bilangan random untuk memastikan reprodusibilitas hasil.
+_______________________________________________________________________________________________________________________________
+Hasil dari model random forest:
+
+1. Akurasi Model
+- Train Accuracy: 1.0 (100%)
+- Model memiliki performa sempurna di data latih, tetapi ini mungkin menunjukkan potensi overfitting.
+- Test Accuracy: 0.883 (88.26%)
+- Akurasi cukup tinggi di data uji, menunjukkan model dapat memprediksi dengan baik, meskipun sedikit lebih rendah dibandingkan data latih.
+2. Classification Report
+- Precision, Recall, dan F1-Score:
+- Kelas 0 (Negatif):
+- Precision: 0.83 → 83% dari prediksi negatif benar.
+- Recall: 0.91 → Model mampu menangkap 91% sampel negatif yang benar.
+- F1-Score: 0.87 → Keseimbangan antara precision dan recall cukup baik.
+- Kelas 1 (Positif):
+- Precision: 0.93 → 93% dari prediksi positif benar.
+- Recall: 0.86 → Model mampu menangkap 86% sampel positif yang benar.
+- F1-Score: 0.89 → Hasilnya sedikit lebih baik dibandingkan kelas negatif.
+3. Rata-rata Skor
+- Akurasi Keseluruhan: 88% menunjukkan model cukup baik secara umum.
+- Macro Avg dan Weighted Avg:
+- Nilai-nilai ini konsisten di sekitar 0.88–0.89, mengindikasikan performa yang seimbang antar kelas.
 
 ## Evaluation
-Pada project ini saya menggunakan metrik akurasi, precision, recall, dan F1 score.
-- Metrik yang digunakan
-  - Akurasi: Merupakan metrik untuk menghitung proporsi prediksi yang benar dari semua prediksi yang dilakukan model. Nilai akurasi yang tinggi menunjukkan bahwa model mampu memprediksi sebagian besar kasus dengan benar.
-    - Hasil: Random Forest memiliki akurasi testing yang sedikit lebih tinggi dibandingkan KNN. Rndom forest: akurasi training 100% dan akurasi testing 88.3%. KNN: akurasi training 90.4% dan akurasi testing 85.7%.
-      
-  - Precision:metrik ini berguna untuk mengukur proporsi prediksi positif yang benar-benar positif. Dihitung dengan membagi jumlah positif yang diprediksi dengan benar dengan jumlah total prediksi positif.
-     - Hasil: Random Forest memiliki precision yang lebih tinggi untuk kelas positif (penyakit jantung) dibandingkan KNN. KNN memiliki precision yang lebih tinggi untuk kelas negatif (tidak memiliki penyakit jantung) dibandingkan Random Forest.
-         - Random Forest: Kelas negatif (0) 0.83, Kelas positif (1) 0.93
-         - KNN: Kelas negatif (0) 0.80, Kelas positif (1) 0.90
-
-  - Recall: untuk proporsi kasus positif yang benar-benar diidentifikasi oleh model. Dihitung dengan membagi jumlah positif yang diprediksi dengan benar dengan jumlah total kasus positif yang sebenarnya. Recall yang tinggi menunjukkan bahwa model mampu mengidentifikasi sebagian besar kasus positif.
-      - Hasil: Random Forest memiliki recall yang lebih tinggi untuk kelas negatif dibandingkan KNN. KNN memiliki recall yang sedikit lebih tinggi untuk kelas positif dibandingkan Random Forest.
-          - Random Forest: Kelas negatif (0) 0.91. Kelas positif (1) 0.86
-          - KNN: Kelas negatif (0) 0.88, Kelas positif (1) 0.84
-     
-  -  F1-Score: Merupakan metrik yang menggabungkan precision dan recall menjadi satu skor. Dihitung dengan rata-rata harmonis precision dan recall.
-F1-Score yang tinggi menunjukkan keseimbangan yang baik antara precision dan recall, artinya model dapat memprediksi kedua kelas dengan cukup baik.
-      - Hasil: F1-Score untuk kedua model berada di kisaran yang serupa.
-          - Random Forest: Kelas negatif (0) 0.87, Kelas positif 0.89
-          - KNN: Kelas negatif (0) 0.84, Kelas (positif (1) 0.87
-
-- Kesimpulan: Random Forest memiliki akurasi testing yang sedikit lebih tinggi dan unggul dalam mendeteksi penyakit jantung (precision dan recall untuk kelas positif). Namun, KNN mungkin lebih baik dalam mengidentifikasi pasien yang sehat (precision untuk kelas negatif). 
-
-
+Penerapan algoritma Random Forest dapat meningkatkan akurasi dalam mendeteksi dan memprediksi risiko penyakit jantung dengan kemampuannya menangani data kompleks dan non-linear, seperti faktor risiko yang saling terkait. Algoritma ini menggunakan pendekatan ensemble learning dan bagging, yang mengurangi overfitting sehingga model dapat menggeneralisasi dengan lebih baik pada data pengujian dan menghasilkan prediksi yang lebih stabil. Hasil evaluasi menunjukkan bahwa Random Forest memberikan akurasi tinggi, dengan penelitian sebelumnya menunjukkan akurasi mencapai 87.7% pada data pengujian dan 92.63% pada data validasi. Selain itu, Random Forest juga mampu mengidentifikasi fitur-fitur penting dalam memprediksi risiko penyakit jantung, memberikan wawasan bagi profesional medis tentang faktor-faktor risiko utama yang berpengaruh pada kesehatan jantung. Algoritma ini juga efektif menangani data yang hilang dan tidak terstruktur, membuatnya cocok untuk digunakan dalam deteksi dini dan pencegahan penyakit jantung pada pasien. Dengan demikian, Random Forest terbukti sebagai algoritma yang efektif untuk meningkatkan akurasi prediksi dan mendukung keputusan medis dalam penanganan penyakit jantung.
 
 ## Referensi
 1. Haganta Depari, D., Widiastiwi, Y., Mega Santoni, M., Ilmu Komputer, F., Pembangunan Nasional Veteran Jakarta, U., Fatmawati Raya, J. R., & Labu, P. (n.d.). Perbandingan Model Decision Tree, Naive Bayes dan Random Forest untuk Prediksi Klasifikasi Penyakit Jantung. JURNAL INFORMATIK Edisi Ke, 18, 2022.
